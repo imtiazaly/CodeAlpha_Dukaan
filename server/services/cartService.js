@@ -58,7 +58,41 @@ const getCart = async (userId) => {
   return cart;
 };
 
+
+const updateCartItem = async (userId, productId, quantity) => {
+  const cart = await Cart.findOne({ user: userId });
+
+  if (!cart) {
+    throw new Error("Cart not found");
+  }
+
+  const product = await Product.findById(productId);
+
+  if (!product) {
+    throw new Error("Product not found");
+  }
+
+  if (quantity > product.stock) {
+    throw new Error("Requested quantity exceeds available stock");
+  }
+
+  const item = cart.items.find(
+    (item) => item.product.toString() === productId.toString(),
+  );
+
+  if (!item) {
+    throw new Error("Product is not in the cart");
+  }
+
+  item.quantity = quantity;
+
+  await cart.save();
+
+  return cart;
+};
+
 module.exports = {
   addToCart,
   getCart,
+  updateCartItem,
 };

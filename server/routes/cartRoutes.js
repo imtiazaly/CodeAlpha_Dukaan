@@ -4,13 +4,13 @@ const authMiddleware = require("../middleware/authMiddleware");
 const {
   addProductToCart,
   getUserCart,
+  updateCartProduct,
 } = require("../controllers/cartController");
 const { addToCartValidation } = require("../validators/cartValidator");
 const validate = require("../middleware/validate");
 
 const router = express.Router();
 
-router.get("/", authMiddleware, getUserCart);
 router.post(
   "/",
   authMiddleware,
@@ -18,5 +18,7 @@ router.post(
   validate,
   addProductToCart,
 );
+router.get("/", authMiddleware, getUserCart);
+router.put("/item", authMiddleware, updateCartProduct);
 
 module.exports = router;
