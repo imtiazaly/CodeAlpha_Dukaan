@@ -45,6 +45,20 @@ const addToCart = async (userId, productId, quantity) => {
   return cart;
 };
 
+const getCart = async (userId) => {
+  const cart = await Cart.findOne({ user: userId }).populate("items.product");
+
+  if (!cart) {
+    return {
+      user: userId,
+      items: [],
+    };
+  }
+
+  return cart;
+};
+
 module.exports = {
   addToCart,
+  getCart,
 };
