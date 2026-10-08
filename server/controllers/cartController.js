@@ -2,6 +2,7 @@ const {
   addToCart,
   getCart,
   updateCartItem,
+  removeCartItem,
 } = require("../services/cartService");
 
 const addProductToCart = async (req, res) => {
@@ -53,8 +54,26 @@ const updateCartProduct = async (req, res) => {
   }
 };
 
+const removeProductFromCart = async (req, res) => {
+  try {
+    const { productId } = req.body;
+
+    const cart = await removeCartItem(req.user.userId, productId);
+
+    res.status(200).json({
+      message: "Cart item removed",
+      cart,
+    });
+  } catch (error) {
+    res.status(400).json({
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   addProductToCart,
   getUserCart,
   updateCartProduct,
+  removeProductFromCart,
 };

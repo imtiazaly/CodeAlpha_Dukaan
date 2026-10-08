@@ -91,8 +91,33 @@ const updateCartItem = async (userId, productId, quantity) => {
   return cart;
 };
 
+const removeCartItem = async (userId, productId) => {
+  const cart = await Cart.findOne({ user: userId });
+
+  if (!cart) {
+    throw new Error("Cart not found");
+  }
+
+  const item = cart.items.find(
+    (item) => item.product.toString() === productId.toString(),
+  );
+
+  if (!item) {
+    throw new Error("Product is not in the cart");
+  }
+
+  cart.items = cart.items.filter(
+    (item) => item.product.toString() !== productId.toString(),
+  );
+
+  await cart.save();
+
+  return cart;
+};
+
 module.exports = {
   addToCart,
   getCart,
   updateCartItem,
+  removeCartItem,
 };
