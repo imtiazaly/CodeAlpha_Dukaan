@@ -2,6 +2,7 @@ const {
   createOrder,
   getMyOrders,
   getOrderById,
+  cancelOrder,
 } = require("../services/orderService");
 
 const placeOrder = async (req, res) => {
@@ -89,9 +90,33 @@ const changeOrderStatus = async (req, res) => {
   }
 };
 
+const cancelUserOrder = async (req, res) => {
+  try {
+    const order = await cancelOrder(req.user.userId, req.params.orderId);
+
+    return res.status(200).json({
+      message: "Order cancelled successfully",
+      order,
+    });
+  } catch (error) {
+    if (error.statusCode) {
+      return res.status(error.statusCode).json({
+        message: error.message,
+      });
+    }
+
+    console.error("Cancel order error:", error);
+
+    return res.status(500).json({
+      message: "Failed to cancel order",
+    });
+  }
+};
+
 module.exports = {
   placeOrder,
   getUserOrders,
   getOrderDetails,
   changeOrderStatus,
+  cancelUserOrder,
 };

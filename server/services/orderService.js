@@ -139,9 +139,60 @@ const updateOrderStatus = async (orderId, status) => {
   return order;
 };
 
+const cancelOrder = async (userId, orderId) => {
+  if (!mongoose.isValidObjectId(orderId)) {
+    const error = new Error("Invalid order ID");
+    error.statusCode = 400;
+    throw error;
+  }
+
+  const session = await mongoose.startSession();
+
+  try {
+    let cancelledOrder;
+
+    await session.withTransaction(async () => {
+      const order = await Order.findOne({
+        _id: orderId,
+        user: userId,
+      }).session(session);
+
+      if (!order) {
+        const error = new Error("Order not found");
+        error.statusCode = 404;
+        throw error;
+      }
+
+      if (order.status !== "pending") {
+        const error = new Error("Only pending orders can be cancelled");
+        error.statusCode = 400;
+        throw error;
+      }
+
+      for (const item of order.items) {
+        await Product.updateOne(
+          { _id: item.product },
+          { $inc: { stock: item.quantity } },
+          { session },
+        );
+      }
+
+      order.status = "cancelled";
+      await order.save({ session });
+
+      cancelledOrder = order;
+    });
+
+    return cancelledOrder;
+  } finally {
+    await session.endSession();
+  }
+};
+
 module.exports = {
   createOrder,
   getMyOrders,
   getOrderById,
   updateOrderStatus,
+  cancelOrder,
 };

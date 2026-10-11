@@ -14,6 +14,7 @@ const {
   getUserOrders,
   getOrderDetails,
   changeOrderStatus,
+  cancelUserOrder,
 } = require("../controllers/orderController");
 
 const router = express.Router();
@@ -29,5 +30,6 @@ router.patch(
   changeOrderStatus,
 );
 router.get("/:orderId", authMiddleware, getOrderDetails);
+router.patch("/:orderId/cancel", authMiddleware, cancelUserOrder);
 
 module.exports = router;
