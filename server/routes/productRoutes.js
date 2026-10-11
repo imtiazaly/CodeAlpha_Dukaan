@@ -2,6 +2,11 @@ const express = require("express");
 
 const authMiddleware = require("../middleware/authMiddleware");
 const adminMiddleware = require("../middleware/adminMiddleware");
+const validate = require("../middleware/validate");
+const {
+  createProductValidation,
+  productIdValidation,
+} = require("../validators/productValidator");
 
 const {
   createProduct,
@@ -11,8 +16,15 @@ const {
 
 const router = express.Router();
 
-router.post("/", authMiddleware, adminMiddleware, createProduct);
+router.post(
+  "/",
+  authMiddleware,
+  adminMiddleware,
+  createProductValidation,
+  validate,
+  createProduct,
+);
 router.get("/", getProducts);
-router.get("/:id", getProductById);
+router.get("/:id", productIdValidation, validate, getProductById);
 
 module.exports = router;
