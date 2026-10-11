@@ -1,4 +1,4 @@
-const { createOrder } = require("../services/orderService");
+const { createOrder, getMyOrders } = require("../services/orderService");
 
 const placeOrder = async (req, res) => {
   try {
@@ -31,6 +31,24 @@ const placeOrder = async (req, res) => {
   }
 };
 
+const getUserOrders = async (req, res) => {
+  try {
+    const orders = await getMyOrders(req.user.userId);
+
+    return res.status(200).json({
+      count: orders.length,
+      orders,
+    });
+  } catch (error) {
+    console.error("Get my orders error:", error);
+
+    return res.status(500).json({
+      message: "Failed to fetch orders",
+    });
+  }
+};
+
 module.exports = {
   placeOrder,
+  getUserOrders,
 };

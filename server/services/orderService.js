@@ -85,6 +85,15 @@ const createOrder = async (userId, shippingAddress) => {
   }
 };
 
+const getMyOrders = async (userId) => {
+  const orders = await Order.find({ user: userId }).sort({
+    createdAt: -1,
+  });
+
+  return orders;
+};
+
 module.exports = {
   createOrder,
+  getMyOrders,
 };
