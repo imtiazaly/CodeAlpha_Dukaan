@@ -1,5 +1,8 @@
 const express = require("express");
 
+const authMiddleware = require("../middleware/authMiddleware");
+const adminMiddleware = require("../middleware/adminMiddleware");
+
 const {
   createProduct,
   getProducts,
@@ -8,7 +11,7 @@ const {
 
 const router = express.Router();
 
-router.post("/", createProduct);
+router.post("/", authMiddleware, adminMiddleware, createProduct);
 router.get("/", getProducts);
 router.get("/:id", getProductById);
 

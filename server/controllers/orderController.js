@@ -3,6 +3,7 @@ const {
   getMyOrders,
   getOrderById,
   cancelOrder,
+  updateOrderStatus,
 } = require("../services/orderService");
 
 const placeOrder = async (req, res) => {
