@@ -20,7 +20,6 @@ export function useAuth() {
       method: "POST",
       body: JSON.stringify({ email, password }),
     });
-
     setAuth(data.user, data.token);
     return data;
   };
@@ -30,7 +29,6 @@ export function useAuth() {
       method: "POST",
       body: JSON.stringify({ name, email, password }),
     });
-
     setAuth(data.user, data.token);
     return data;
   };
