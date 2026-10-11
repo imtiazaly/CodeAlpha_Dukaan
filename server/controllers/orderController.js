@@ -1,4 +1,8 @@
-const { createOrder, getMyOrders } = require("../services/orderService");
+const {
+  createOrder,
+  getMyOrders,
+  getOrderById,
+} = require("../services/orderService");
 
 const placeOrder = async (req, res) => {
   try {
@@ -48,7 +52,46 @@ const getUserOrders = async (req, res) => {
   }
 };
 
+const getOrderDetails = async (req, res) => {
+  try {
+    const order = await getOrderById(req.user.userId, req.params.orderId);
+
+    return res.status(200).json({ order });
+  } catch (error) {
+    return res.status(error.statusCode || 500).json({
+      message: error.statusCode
+        ? error.message
+        : "Failed to fetch order details",
+    });
+  }
+};
+
+const changeOrderStatus = async (req, res) => {
+  try {
+    const order = await updateOrderStatus(req.params.orderId, req.body.status);
+
+    return res.status(200).json({
+      message: "Order status updated successfully",
+      order,
+    });
+  } catch (error) {
+    if (error.statusCode) {
+      return res.status(error.statusCode).json({
+        message: error.message,
+      });
+    }
+
+    console.error("Update order status error:", error);
+
+    return res.status(500).json({
+      message: "Failed to update order status",
+    });
+  }
+};
+
 module.exports = {
   placeOrder,
   getUserOrders,
+  getOrderDetails,
+  changeOrderStatus,
 };

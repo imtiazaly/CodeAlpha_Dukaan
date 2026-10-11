@@ -31,6 +31,13 @@ const createOrderValidation = [
     .withMessage("Postal code is required"),
 ];
 
+const updateOrderStatusValidation = [
+  body("status")
+    .isIn(["pending", "processing", "shipped", "delivered", "cancelled"])
+    .withMessage("Invalid order status"),
+];
+
 module.exports = {
   createOrderValidation,
+  updateOrderStatusValidation,
 };

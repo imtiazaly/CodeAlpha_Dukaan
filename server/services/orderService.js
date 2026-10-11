@@ -93,7 +93,55 @@ const getMyOrders = async (userId) => {
   return orders;
 };
 
+const getOrderById = async (userId, orderId) => {
+  if (!mongoose.isValidObjectId(orderId)) {
+    const error = new Error("Invalid order ID");
+    error.statusCode = 400;
+    throw error;
+  }
+
+  const order = await Order.findOne({
+    _id: orderId,
+    user: userId,
+  });
+
+  if (!order) {
+    const error = new Error("Order not found");
+    error.statusCode = 404;
+    throw error;
+  }
+
+  return order;
+};
+
+const updateOrderStatus = async (orderId, status) => {
+  if (!mongoose.isValidObjectId(orderId)) {
+    const error = new Error("Invalid order ID");
+    error.statusCode = 400;
+    throw error;
+  }
+
+  const order = await Order.findByIdAndUpdate(
+    orderId,
+    { status },
+    {
+      new: true,
+      runValidators: true,
+    },
+  );
+
+  if (!order) {
+    const error = new Error("Order not found");
+    error.statusCode = 404;
+    throw error;
+  }
+
+  return order;
+};
+
 module.exports = {
   createOrder,
   getMyOrders,
+  getOrderById,
+  updateOrderStatus,
 };
