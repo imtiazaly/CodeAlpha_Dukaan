@@ -42,6 +42,8 @@ const addToCart = async (userId, productId, quantity) => {
 
   await cart.save();
 
+  await cart.populate("items.product");
+
   return cart;
 };
 
@@ -57,7 +59,6 @@ const getCart = async (userId) => {
 
   return cart;
 };
-
 
 const updateCartItem = async (userId, productId, quantity) => {
   const cart = await Cart.findOne({ user: userId });
@@ -88,6 +89,8 @@ const updateCartItem = async (userId, productId, quantity) => {
 
   await cart.save();
 
+  await cart.populate("items.product");
+
   return cart;
 };
 
@@ -111,6 +114,8 @@ const removeCartItem = async (userId, productId) => {
   );
 
   await cart.save();
+
+  await cart.populate("items.product");
 
   return cart;
 };

@@ -25,14 +25,15 @@ router.post(
 );
 router.get("/", authMiddleware, getUserCart);
 router.put(
-  "/item",
+  "/item/:productId",
   authMiddleware,
   updateCartItemValidation,
   validate,
   updateCartProduct,
 );
+
 router.delete(
-  "/item",
+  "/item/:productId",
   authMiddleware,
   removeCartItemValidation,
   validate,

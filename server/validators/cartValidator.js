@@ -1,4 +1,4 @@
-const { body } = require("express-validator");
+const { body, param } = require("express-validator");
 
 const addToCartValidation = [
   body("productId")
@@ -16,7 +16,7 @@ const addToCartValidation = [
 ];
 
 const updateCartItemValidation = [
-  body("productId")
+  param("productId")
     .trim()
     .notEmpty()
     .withMessage("Product ID is required")
@@ -31,7 +31,7 @@ const updateCartItemValidation = [
 ];
 
 const removeCartItemValidation = [
-  body("productId")
+  param("productId")
     .trim()
     .notEmpty()
     .withMessage("Product ID is required")

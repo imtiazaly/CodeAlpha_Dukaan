@@ -39,7 +39,8 @@ const getUserCart = async (req, res) => {
 
 const updateCartProduct = async (req, res) => {
   try {
-    const { productId, quantity } = req.body;
+    const { productId } = req.params;
+    const { quantity } = req.body;
 
     const cart = await updateCartItem(req.user.userId, productId, quantity);
 
@@ -56,7 +57,7 @@ const updateCartProduct = async (req, res) => {
 
 const removeProductFromCart = async (req, res) => {
   try {
-    const { productId } = req.body;
+    const { productId } = req.params;
 
     const cart = await removeCartItem(req.user.userId, productId);
 
