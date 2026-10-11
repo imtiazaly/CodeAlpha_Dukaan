@@ -1,7 +1,10 @@
+
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <HelloWorld />
+  <main>
+    <h1>Dukaan</h1>
+    <p>Your online shopping store.</p>
+  </main>
 </template>
