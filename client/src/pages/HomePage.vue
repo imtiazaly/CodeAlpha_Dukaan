@@ -28,7 +28,8 @@ watch(
 
 onMounted(async () => {
   try {
-    products.value = await getProducts();
+    const data = await getProducts();
+    products.value = Array.isArray(data) ? data : (data?.products || []);
   } catch (err) {
     error.value = err.message;
   } finally {
@@ -38,6 +39,7 @@ onMounted(async () => {
 
 // Dynamic Categories list
 const categories = computed(() => {
+  if (!Array.isArray(products.value)) return ["All"];
   const cats = new Set(
     products.value
       .map((p) => p.category)
@@ -48,6 +50,7 @@ const categories = computed(() => {
 
 // Filtered & Sorted Products
 const filteredProducts = computed(() => {
+  if (!Array.isArray(products.value)) return [];
   let list = [...products.value];
 
   // 1. Filter by category

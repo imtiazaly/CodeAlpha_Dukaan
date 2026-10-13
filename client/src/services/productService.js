@@ -1,5 +1,12 @@
 import { apiRequest } from "./api";
 
-export function getProducts() {
-  return apiRequest("/products");
+export async function getProducts(params = {}) {
+  const query = new URLSearchParams(params).toString();
+  const url = query ? `/products?${query}` : "/products";
+  const data = await apiRequest(url);
+  return Array.isArray(data) ? data : (data?.products || []);
+}
+
+export function getProductById(id) {
+  return apiRequest(`/products/${id}`);
 }
