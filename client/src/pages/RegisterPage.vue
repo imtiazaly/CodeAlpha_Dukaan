@@ -50,7 +50,7 @@ const handleRegister = async () => {
     <div class="w-full max-w-md glass-panel rounded-3xl p-8 sm:p-10 shadow-2xl space-y-6">
       <!-- Header -->
       <div class="text-center space-y-2">
-        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 to-pink-500 flex items-center justify-center text-white mx-auto shadow-md shadow-indigo-500/25 mb-3">
+        <div class="w-12 h-12 rounded-2xl bg-linear-to-tr from-indigo-600 to-pink-500 flex items-center justify-center text-white mx-auto shadow-md shadow-indigo-500/25 mb-3">
           <Sparkles class="w-6 h-6 animate-pulse" />
         </div>
         <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">Create Account</h2>
@@ -121,7 +121,7 @@ const handleRegister = async () => {
         <button
           type="submit"
           :disabled="loading"
-          class="w-full py-3.5 px-4 bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/25 transition-all mt-2 active:scale-[0.99] disabled:opacity-70"
+          class="w-full py-3.5 px-4 bg-linear-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/25 transition-all mt-2 active:scale-[0.99] disabled:opacity-70"
         >
           <div v-if="loading" class="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
           <span v-else class="flex items-center gap-2">

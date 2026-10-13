@@ -219,7 +219,7 @@ const formatDate = (dateString) => {
 
             <!-- Active progress bar -->
             <div
-              class="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-gradient-to-r from-indigo-500 to-emerald-500 transition-all duration-500 -z-10"
+              class="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-linear-to-r from-indigo-500 to-emerald-500 transition-all duration-500 -z-10"
               :style="{
                 width: ((getStepNumber(order.status) - 1) / 3) * 100 + '%',
               }"
@@ -296,7 +296,7 @@ const formatDate = (dateString) => {
           v-else
           class="flex items-center gap-2 p-3 rounded-xl bg-rose-50 text-rose-700 text-xs font-semibold"
         >
-          <XCircle class="w-4 h-4 flex-shrink-0" />
+          <XCircle class="w-4 h-4 shrink-0" />
           <span>This order has been cancelled.</span>
         </div>
 
@@ -346,7 +346,7 @@ const formatDate = (dateString) => {
           v-if="order.shippingAddress"
           class="p-3.5 rounded-2xl bg-white/70 border border-slate-100 text-xs flex items-center gap-3"
         >
-          <MapPin class="w-4 h-4 text-indigo-600 flex-shrink-0" />
+          <MapPin class="w-4 h-4 text-indigo-600 shrink-0" />
           <div class="text-slate-600 truncate">
             <strong>Delivery to:</strong> {{ order.shippingAddress.fullName }} |
             {{ order.shippingAddress.address }},

@@ -135,7 +135,7 @@ const handleCheckout = () => {
             >
               <!-- Thumbnail -->
               <div
-                class="w-20 h-20 rounded-xl bg-white overflow-hidden flex-shrink-0 border border-slate-100 flex items-center justify-center"
+                class="w-20 h-20 rounded-xl bg-white overflow-hidden shrink-0 border border-slate-100 flex items-center justify-center"
               >
                 <img
                   v-if="item.product?.image"
@@ -181,7 +181,7 @@ const handleCheckout = () => {
                       <Minus class="w-3.5 h-3.5" />
                     </button>
                     <span
-                      class="text-xs font-bold text-slate-700 min-w-[16px] text-center"
+                      class="text-xs font-bold text-slate-700 min-w-4 text-center"
                     >
                       {{ item.quantity }}
                     </span>
@@ -237,7 +237,7 @@ const handleCheckout = () => {
 
             <button
               @click="handleCheckout"
-              class="w-full py-3.5 px-4 bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/25 transition-all hover:shadow-indigo-500/35"
+              class="w-full py-3.5 px-4 bg-linear-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/25 transition-all hover:shadow-indigo-500/35"
             >
               <span>Proceed to Checkout</span>
               <ArrowRight class="w-4 h-4" />

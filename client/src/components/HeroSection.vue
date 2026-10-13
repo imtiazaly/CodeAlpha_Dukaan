@@ -20,7 +20,7 @@ const scrollToProducts = () => {
   <div class="relative py-12 md:py-20 overflow-hidden">
     <!-- Ambient Background Glows -->
     <div
-      class="absolute -top-10 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-tr from-indigo-500/10 via-purple-500/10 to-pink-500/10 blur-3xl -z-10 pointer-events-none rounded-full"
+      class="absolute -top-10 left-1/2 -translate-x-1/2 w-150 h-75 bg-linear-to-tr from-indigo-500/10 via-purple-500/10 to-pink-500/10 blur-3xl -z-10 pointer-events-none rounded-full"
     />
 
     <div class="text-center max-w-4xl mx-auto space-y-6">
@@ -40,7 +40,7 @@ const scrollToProducts = () => {
       >
         Thoughtfully Designed. <br />
         <span
-          class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent"
+          class="bg-linear-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent"
         >
           Crafted to Perfection.
         </span>
@@ -58,7 +58,7 @@ const scrollToProducts = () => {
       <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
         <button
           @click="scrollToProducts"
-          class="px-7 py-3.5 bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-bold text-sm rounded-2xl shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-0.5 transition-all flex items-center gap-2 group"
+          class="px-7 py-3.5 bg-linear-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-bold text-sm rounded-2xl shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-0.5 transition-all flex items-center gap-2 group"
         >
           <span>Explore Collection</span>
           <ArrowDown
@@ -81,7 +81,7 @@ const scrollToProducts = () => {
       >
         <div class="glass-card rounded-xl p-3.5 flex items-center gap-3">
           <div
-            class="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0"
+            class="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0"
           >
             <Truck class="w-4 h-4" />
           </div>
@@ -93,7 +93,7 @@ const scrollToProducts = () => {
 
         <div class="glass-card rounded-xl p-3.5 flex items-center gap-3">
           <div
-            class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center flex-shrink-0"
+            class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0"
           >
             <ShieldCheck class="w-4 h-4" />
           </div>
@@ -107,7 +107,7 @@ const scrollToProducts = () => {
           class="glass-card col-span-2 md:col-span-1 rounded-xl p-3.5 flex items-center gap-3"
         >
           <div
-            class="w-9 h-9 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center flex-shrink-0"
+            class="w-9 h-9 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center shrink-0"
           >
             <Clock class="w-4 h-4" />
           </div>

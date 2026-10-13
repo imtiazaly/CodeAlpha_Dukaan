@@ -205,7 +205,7 @@ const handleAddToCart = async () => {
                 <Minus class="w-4 h-4" />
               </button>
               <span
-                class="text-sm font-bold text-slate-800 min-w-[20px] text-center"
+                class="text-sm font-bold text-slate-800 min-w-5 text-center"
               >
                 {{ quantity }}
               </span>
@@ -237,7 +237,7 @@ const handleAddToCart = async () => {
               'w-full py-4 rounded-2xl font-bold text-sm flex items-center justify-center gap-2 shadow-lg transition-all',
               isOutOfStock
                 ? 'bg-slate-200 text-slate-400 cursor-not-allowed shadow-none'
-                : 'bg-gradient-to-r from-indigo-600 via-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white shadow-indigo-500/25 hover:shadow-indigo-500/35 active:scale-[0.99]',
+                : 'bg-linear-to-r from-indigo-600 via-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white shadow-indigo-500/25 hover:shadow-indigo-500/35 active:scale-[0.99]',
             ]"
           >
             <div

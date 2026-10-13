@@ -345,7 +345,7 @@ const handlePlaceOrder = async () => {
           <button
             @click="handlePlaceOrder"
             :disabled="loading || cartItemsCount === 0"
-            class="w-full py-4 bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/25 transition-all disabled:opacity-50"
+            class="w-full py-4 bg-linear-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/25 transition-all disabled:opacity-50"
           >
             <div
               v-if="loading"
@@ -380,7 +380,7 @@ const handlePlaceOrder = async () => {
               <img
                 :src="item.product?.image"
                 :alt="item.product?.name"
-                class="w-12 h-12 rounded-xl object-cover bg-slate-100 flex-shrink-0 border"
+                class="w-12 h-12 rounded-xl object-cover bg-slate-100 shrink-0 border"
               />
               <div class="flex-1 min-w-0">
                 <p class="font-bold text-slate-800 truncate">

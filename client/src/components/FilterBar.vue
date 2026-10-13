@@ -85,9 +85,9 @@ const emit = defineEmits([
         :key="cat"
         @click="emit('update:selectedCategory', cat)"
         :class="[
-          'px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer flex-shrink-0',
+          'px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer shrink-0',
           selectedCategory === cat
-            ? 'bg-gradient-to-r from-indigo-600 to-indigo-700 text-white shadow-md shadow-indigo-500/25'
+            ? 'bg-linear-to-r from-indigo-600 to-indigo-700 text-white shadow-md shadow-indigo-500/25'
             : 'bg-white hover:bg-slate-100 text-slate-600 border border-slate-200/70 hover:border-slate-300',
         ]"
       >
