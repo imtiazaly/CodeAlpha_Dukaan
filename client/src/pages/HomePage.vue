@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { getProducts } from "../services/productService";
+import HeroSection from "../components/HeroSection.vue";
 import ProductCard from "../components/ProductCard.vue";
 
 const products = ref([]);
@@ -19,21 +20,30 @@ onMounted(async () => {
 </script>
 
 <template>
-  <section>
-    <h1>Welcome to Dukaan</h1>
+  <div class="space-y-12">
+    <!-- Hero Section -->
+    <HeroSection />
 
-    <p v-if="loading">Loading products...</p>
+    <!-- Products Section Anchor -->
+    <div id="products-grid" class="scroll-mt-24">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">Featured Products</h2>
+          <p class="text-xs text-slate-500">Browse through our handpicked essentials</p>
+        </div>
+      </div>
 
-    <p v-else-if="error">{{ error }}</p>
+      <p v-if="loading" class="text-sm text-slate-500">Loading products...</p>
+      <p v-else-if="error" class="text-sm text-rose-500">{{ error }}</p>
+      <p v-else-if="products.length === 0" class="text-sm text-slate-500">No products available.</p>
 
-    <p v-else-if="products.length === 0">No products available.</p>
-
-    <div v-else>
-      <ProductCard
-        v-for="product in products"
-        :key="product._id"
-        :product="product"
-      />
+      <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <ProductCard
+          v-for="product in products"
+          :key="product._id"
+          :product="product"
+        />
+      </div>
     </div>
-  </section>
+  </div>
 </template>
