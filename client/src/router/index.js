@@ -5,6 +5,7 @@ import LoginPage from "../pages/LoginPage.vue";
 import RegisterPage from "../pages/RegisterPage.vue";
 import MainLayout from "../layouts/MainLayout.vue";
 import CheckoutPage from "../pages/CheckoutPage.vue";
+import OrdersPage from "../pages/OrdersPage.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -37,6 +38,11 @@ const router = createRouter({
           path: "checkout",
           name: "checkout",
           component: CheckoutPage,
+        },
+        {
+          path: "orders",
+          name: "orders",
+          component: OrdersPage,
         },
       ],
     },
