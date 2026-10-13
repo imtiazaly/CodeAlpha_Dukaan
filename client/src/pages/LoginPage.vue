@@ -9,8 +9,8 @@ const router = useRouter();
 const { login } = useAuth();
 const { showToast } = useToast();
 
-const email = ref("");
-const password = ref("");
+const email = ref("demo@user.com");
+const password = ref("12345678");
 const showPassword = ref(false);
 const loading = ref(false);
 const error = ref("");
@@ -113,6 +113,14 @@ const handleLogin = async () => {
               <Eye v-else class="w-4 h-4" />
             </button>
           </div>
+        </div>
+
+        <!-- Demo Account Quick Tip Pill -->
+        <div
+          class="p-2.5 rounded-xl bg-indigo-50/70 border border-indigo-100 flex items-center justify-between text-[11px] text-indigo-700 font-medium"
+        >
+          <span>⚡ <strong>Demo Account:</strong> One-click login enabled</span>
+          <span class="text-xs">👇</span>
         </div>
 
         <!-- Submit Button -->
