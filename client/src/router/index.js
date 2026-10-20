@@ -18,35 +18,45 @@ const router = createRouter({
           path: "",
           name: "home",
           component: HomePage,
+          meta: { title: "Dukaan — Premium E-Commerce Store" },
         },
         {
           path: "product/:id",
           name: "product-detail",
           component: ProductDetailPage,
+          meta: { title: "Product Details — Dukaan" },
         },
         {
           path: "login",
           name: "login",
           component: LoginPage,
+          meta: { title: "Sign In — Dukaan" },
         },
         {
           path: "register",
           name: "register",
           component: RegisterPage,
+          meta: { title: "Create Account — Dukaan" },
         },
         {
           path: "checkout",
           name: "checkout",
           component: CheckoutPage,
+          meta: { title: "Checkout — Dukaan" },
         },
         {
           path: "orders",
           name: "orders",
           component: OrdersPage,
+          meta: { title: "My Orders — Dukaan" },
         },
       ],
     },
   ],
+});
+
+router.afterEach((to) => {
+  document.title = to.meta.title || "Dukaan — Modern E-Commerce Store";
 });
 
 export default router;
