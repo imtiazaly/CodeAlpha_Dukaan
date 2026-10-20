@@ -304,13 +304,13 @@ const formatDate = (dateString) => {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
           <div
             v-for="item in order.items"
-            :key="item._id || item.product?._id"
+            :key="item._id || item.product?._id || item.product"
             class="flex items-center gap-3 p-3 rounded-2xl bg-slate-50/80 border border-slate-100"
           >
             <img
-              v-if="item.product?.image"
-              :src="item.product.image"
-              :alt="item.product?.name"
+              v-if="item.image || item.product?.image"
+              :src="item.image || item.product?.image"
+              :alt="item.name || item.product?.name"
               class="w-12 h-12 rounded-xl object-cover bg-white border"
             />
             <div
@@ -322,7 +322,7 @@ const formatDate = (dateString) => {
 
             <div class="flex-1 min-w-0">
               <p class="text-xs font-bold text-slate-800 truncate">
-                {{ item.product?.name || "Product" }}
+                {{ item.name || item.product?.name || "Product" }}
               </p>
               <p class="text-[11px] text-slate-400">
                 Qty: {{ item.quantity }} × ${{
